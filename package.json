@@ -1,0 +1,16 @@
+{
+  "name": "catering-management-pc",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "umi-plugin-react": "^1.5.0"
+  },
+  "dependencies": {
+    "umi": "^2.5.0"
+  }
+}
