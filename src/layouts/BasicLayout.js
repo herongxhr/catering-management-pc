@@ -1,9 +1,14 @@
 import React, { Suspense } from 'react';
 import { Layout } from 'antd';
+//https://github.com/gaearon/react-document-title
 import DocumentTitle from 'react-document-title';
 import isEqual from 'lodash/isEqual';
+//https://github.com/alexreardon/memoize-one
+//A memoization library that only caches the result of the most recent arguments.
 import memoizeOne from 'memoize-one';
 import { connect } from 'dva';
+//https://github.com/d6u/react-container-query
+//True modularity in styling responsive component.
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import pathToRegexp from 'path-to-regexp';
@@ -75,15 +80,6 @@ class BasicLayout extends React.Component {
     });
   }
 
-  componentDidUpdate(preProps) {
-    // After changing to phone mode,
-    // if collapsed is true, you need to click twice to display
-    const { collapsed, isMobile } = this.props;
-    if (isMobile && !preProps.isMobile && !collapsed) {
-      this.handleMenuCollapse(false);
-    }
-  }
-
   getContext() {
     const { location, breadcrumbNameMap } = this.props;
     return {
@@ -122,9 +118,9 @@ class BasicLayout extends React.Component {
     const pageName = menu.disableLocal
       ? currRouterData.name
       : formatMessage({
-        id: currRouterData.locale || currRouterData.name,
-        defaultMessage: currRouterData.name,
-      });
+          id: currRouterData.locale || currRouterData.name,
+          defaultMessage: currRouterData.name,
+        });
 
     return `${pageName} - ${title}`;
   };
@@ -209,6 +205,7 @@ class BasicLayout extends React.Component {
     return (
       <React.Fragment>
         <DocumentTitle title={this.getPageTitle(pathname, breadcrumbNameMap)}>
+        {/*<ContainerQuery query={query} initialSize?={{width?, height?}}> */}
           <ContainerQuery query={query}>
             {params => (
               <Context.Provider value={this.getContext()}>

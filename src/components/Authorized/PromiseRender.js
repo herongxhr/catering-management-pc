@@ -37,7 +37,6 @@ export default class PromiseRender extends React.PureComponent {
   // Authorized  render is already instantiated, children is no instantiated
   // Secured is not instantiated
   checkIsInstantiation = target => {
-      //验证对象是否是一个React元素。返回 true 或 false
     if (!React.isValidElement(target)) {
       return target;
     }
